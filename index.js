@@ -4,6 +4,24 @@ let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
 
+var player1Score = 0;
+var player2Score = 0;
+
+var player1 = "";
+var player2 = "";
+var size = localStorage.getItem("size");
+
+document.getElementById("LBL_player1").style.color = "rgb(84, 185, 203)";
+
+function getPlayers() {
+  player1 += localStorage.getItem("player1");
+  player2 += localStorage.getItem("player2");
+
+  document.getElementById("LBL_player1").innerHTML = player1;
+  document.getElementById("LBL_player2").innerHTML = player2;
+
+}
+
 document.querySelector(".score").textContent = score;
 
 fetch("./data/cards.json")

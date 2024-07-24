@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Memory Card Game</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da meowmória</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <h1>Memory Cards</h1>
-    <div class="grid-container">
-    </div>
-    <p>Score: <span class="score"></span></p>
-    <div class="actions">
-        <button onclick="restart()">Restart</button>
-    </div>
-    <script src="index.js"></script>
-  </body>
+</head>
+<body>
+    
+    <div><h1>Jogo da meowmória</h1></div>
+    
+    <section class="login">
+        <div class="login_box">
+          <div class="left">
+            <div class="contact">
+              <form>
+                <h3>Cadastro de jogadores</h3>
+                <label for="player1Name">Jogador 1: </label>
+                <input type="text" placeholder="Player 1" id="player1Name">
+                <label for="player2Name">Jogador 2: </label>
+                <input type="text" placeholder="Player 2" id="player2Name">
+              </form>
+            </div>
+          </div>
+
+          <div class="right">
+            <a href="tabuleiro.html">
+                <img src="/assets/botaoIniciar.png" alt="Imagem de Botão" class="image-button" onclick="setPlayers('12')">
+            </a>
+          </div>
+      </section>
+    
+    
+    
+      <script>
+        var data = {};
+        var json;
+    
+        function setPlayers(size) {
+          localStorage.setItem("player1", document.getElementById("player1Name").value);
+          localStorage.setItem("player2", document.getElementById("player2Name").value);
+          localStorage.setItem("size", size);
+    
+          data = localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : {};
+    
+          json = JSON.stringify(data);
+          localStorage.setItem("data", json);
+        }
+      </script>
+    
+      <script src="./index.js"></script>
+</body>
 </html>
